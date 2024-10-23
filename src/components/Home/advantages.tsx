@@ -1,6 +1,32 @@
-import { Axe, ChartNoAxesCombined, CircleDollarSign, CircleUserRound, ClockArrowUp, Hourglass, ThumbsDown, TimerOff, Users, Workflow } from "lucide-react"
+import {
+  Axe,
+  ChartNoAxesCombined,
+  CircleDollarSign,
+  CircleUserRound,
+  ClockArrowUp,
+  Hourglass,
+  ThumbsDown,
+  TimerOff,
+  Users,
+  Workflow
+} from "lucide-react";
 
-export const Advantages = () => {
+interface AdvantageProps {
+  plansRef: React.RefObject<HTMLElement>;
+}
+
+export const Advantages: React.FC<AdvantageProps> = ({ plansRef }) => {
+  const scrollPosition = (sectionRef: React.RefObject<HTMLElement>, e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    if (sectionRef.current) {
+
+      window.scrollTo({
+        top: sectionRef.current.offsetTop - 112,
+        behavior: 'smooth'
+      })
+    }
+  }
+  
   return(
     <section className="flex flex-col w-full px-12 my-12 gap-14 lg:flex-row lg:w-[1000px] lg:self-center lg:px-0 lg:justify-between lg:my-32 xl:w-[1200px]">
       <article className="flex flex-col text-white font-bold">
@@ -52,7 +78,12 @@ export const Advantages = () => {
               Redução de custos
             </li>
           </ul>
-          <button type="submit" className="mt-auto bg-black text-white font-bold h-9 rounded-xl">Planos</button>
+          <button 
+            type="button" 
+            className="mt-auto bg-black text-white font-bold h-9 rounded-xl"
+            onClick={(e) => scrollPosition(plansRef, e)}>
+            Planos
+          </button>
         </div>
       </div>
     </section>

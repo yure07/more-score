@@ -15,7 +15,7 @@ export default function Home() {
       <Header sectionsRefs={{ knowUsRef, plansRef }}/>
       <Merchan/>
       <Apresentation ref={knowUsRef}/>
-      <Advantages/>
+      <Advantages plansRef={plansRef}/>
       <Plans ref={plansRef}/>
       <footer className="my-16 text-white text-center text-xl">
         Todos os direitos reservados

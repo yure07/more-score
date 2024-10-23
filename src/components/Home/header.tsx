@@ -1,6 +1,7 @@
 "use client"
 import { agbalumo } from "@/app/fonts"
 import { Menu, X } from "lucide-react"
+import Link from "next/link"
 import { useRef, useState } from "react"
 
 interface HeaderProps {
@@ -45,7 +46,7 @@ export const Header = ({ sectionsRefs }: HeaderProps) => {
             >
             Planos
           </button>
-          <button type="button" className="bg-white rounded-xl w-40 h-12 text-xl">Entrar</button>
+          <Link href='/login' className="flex items-center justify-center bg-white rounded-xl w-40 h-12 text-xl">Entrar</Link>
         </nav>
         {toggleMenu ? (
           <X 
@@ -75,7 +76,7 @@ export const Header = ({ sectionsRefs }: HeaderProps) => {
               onClick={(e) => scrollPosition(sectionsRefs.plansRef, e)}>
               Planos
             </button>
-            <button type="button" className="h-10 bg-white rounded-xl mt-4">Entrar</button>
+            <Link href='/login' className="flex items-center justify-center h-10 bg-white rounded-xl mt-4">Entrar</Link>
           </div>
         )}
       </nav>

@@ -1,5 +1,4 @@
 import Image from "next/image"
-import graphImg from '@/assets/images/grafico.svg'
 import { agbalumo } from "@/app/fonts"
 
 export const Merchan = () => {
@@ -13,7 +12,13 @@ export const Merchan = () => {
           custos e <span className="font-bold">agilize</span> processos com a nossa ferramenta.
         </p>
       </article>
-      <Image src={graphImg} alt="graph-example" className="w-80 md:w-[350px] lg:w-[450px]"/>
+      <Image 
+        src='grafico.svg' 
+        width={1}
+        height={1}
+        alt="graph-example" 
+        className="w-80 md:w-[350px] lg:w-[450px]"
+      />
     </section>
   )
 }

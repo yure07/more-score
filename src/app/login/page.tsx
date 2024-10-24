@@ -3,7 +3,6 @@ import { EyeOff, Eye } from "lucide-react"
 import { agbalumo } from "../fonts"
 import Link from "next/link"
 import { useState } from "react"
-import img from '@/assets/images/91627 1.svg'
 import Image from "next/image"
 
 const Login = () => {
@@ -11,7 +10,13 @@ const Login = () => {
 
   return(
     <section className="h-screen flex flex-row justify-center items-center">
-      <Image src={img} alt="login-image" className="hidden lg:block w-[564px] h-[545px]"/>
+      <Image 
+        src='artifical-intelligence.svg'
+        width={1}
+        height={1}
+        alt="login-image" 
+        className="hidden lg:block w-[564px] h-[545px]"
+      />
       <section className="flex flex-col items-center w-72 lg:w-96 lg:bg-black lg:rounded-br-xl lg:rounded-tr-xl lg:py-10">
         <article className="flex flex-col text-white font-bold gap-14">
           <h1 className={`${agbalumo.className} text-5xl text-center`}>+score</h1>
@@ -55,7 +60,7 @@ const Login = () => {
         </form>
         <span className="text-[#737778] text-center my-3">ou</span>
         <Link 
-          href='/'
+          href='/register'
           className="w-72 flex items-center justify-center rounded-lg bg-black text-white h-10 text-sm lg:text-[#737778] underline">
           Cadastre-se
         </Link>

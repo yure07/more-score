@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import { CircleCheck, CircleDollarSign, ClockArrowUp, Crown } from "lucide-react"
+import Link from "next/link"
 
 const Plans = () => {
   return(
@@ -49,7 +50,7 @@ const Plans = () => {
           <span className="flex items-center gap-2 mt-auto text-sm">
             <CircleCheck size={16}/>  1000 análises mensais
           </span>
-          <button type="button" className="w-full h-10 rounded-xl mt-auto bg-white text-black cursor-pointer hover:opacity-75">Escolher</button>
+          <Link href='/dashboard' className="flex items-center justify-center w-full h-10 rounded-xl mt-auto bg-white text-black cursor-pointer hover:opacity-75">Escolher</Link>
         </div>
       </section>
       </section>

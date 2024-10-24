@@ -52,11 +52,12 @@ const Login = () => {
               />
             )}
           </div>
-          <button 
+          <Link href='/plans' className="flex items-center justify-center w-72 rounded-lg bg-white text-black h-10 mt-8 text-sm">Entrar</Link>
+          {/* <button 
             type="submit"
             className="w-72 rounded-lg bg-white text-black h-10 mt-8 text-sm">
             Entrar
-          </button>
+          </button> */}
         </form>
         <span className="text-[#737778] text-center my-3">ou</span>
         <Link 

@@ -43,15 +43,24 @@ const Dashboard = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="flex h-full text-white">
 
-              {tableActive === 1 ? (
-                <ClassificationTable/>
-              ) : (
-                <DistribuitionTable/>
-              )}
+            <thead className='flex w-full justify-center items-center'>
+              <tr className='flex items-center w-full border-b border-[#737778] h-10 text-white text-xs'>
+                <th className="flex items-center justify-center w-[65%] h-full border-r border-[#737778] md:text-sm md:w-[75%] lg:w-[80%]">
+                  {tableActive === 1 ? 'Comentário' : 'Distribuição'} 
+                </th>
+                <th className="w-[35%] text-center md:text-sm md:w-[25%] lg:w-[20%]">
+                  {tableActive === 1 ? 'Emoção' : 'Legenda'}
+                </th>
+              </tr>
+            </thead>
+
+            {tableActive === 1 ? (
+              <ClassificationTable/>
+            ) : (
+              <DistribuitionTable/>
+            )}
               
-            </tbody>
           </table>
         </div>
       </section>

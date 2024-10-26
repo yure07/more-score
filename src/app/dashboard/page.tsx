@@ -27,7 +27,7 @@ const Dashboard = () => {
             Gerar relatório
           </button>
         </form>
-        <div className="w-full h-full mt-7 rounded-xl border border-[#737778]">
+        <div className="w-full h-[80%] mt-7 rounded-xl border border-[#737778] overflow-auto">
           <table className="flex flex-col min-w-full h-full table-auto">
             <thead className='flex w-full justify-center items-center'>
               <tr className='flex items-center w-full border-b border-[#737778] h-10 text-white text-xs px-5 gap-5 md:h-14'>
@@ -49,7 +49,7 @@ const Dashboard = () => {
                 <th className="flex items-center justify-center w-[65%] h-full border-r border-[#737778] md:text-sm md:w-[75%] lg:w-[80%]">
                   {tableActive === 1 ? 'Comentário' : 'Distribuição'} 
                 </th>
-                <th className="w-[35%] text-center md:text-sm md:w-[25%] lg:w-[20%]">
+                <th className="w-[35%] mx-auto text-center md:text-sm md:w-[25%] lg:w-[15%]">
                   {tableActive === 1 ? 'Emoção' : 'Legenda'}
                 </th>
               </tr>

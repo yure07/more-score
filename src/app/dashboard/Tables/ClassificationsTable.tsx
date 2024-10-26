@@ -2,8 +2,8 @@ import { FileChartColumn } from "lucide-react"
 
 export const ClassificationTable = () => {
   return(
-    <tbody className="flex w-full h-full text-white">
-      <tr className="flex flex-col w-[65%] border-r border-[#737778] md:w-[75%] lg:w-[80%]">
+    <tbody className="flex w-full h-full text-white ">
+      <tr className="flex flex-col w-[65%] h-full border-r border-[#737778] md:w-[75%] lg:w-[80%]">
 
         {/* <td className="w-full flex flex-col text-[#737778] items-center self-center gap-4 font-bold">
           <FileChartColumn className="w-16 h-16 md:w-20 md:h-20"/>
@@ -11,7 +11,7 @@ export const ClassificationTable = () => {
         </td> */}
 
         {Array(10).fill(null).map((_, index) => (
-          <td key={index} className={`flex items-center h-10 ${index !== 9 && 'border-b border-[#737778]'} text-xs px-3`}>
+          <td key={index} className={`flex items-center min-h-10 ${index !== 9 && 'border-b border-[#737778]'} text-xs px-3`}>
             <span className="w-full truncate text-center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit
             </span> 

@@ -18,7 +18,7 @@ export default function Home() {
       <Advantages plansRef={plansRef}/>
       <Plans ref={plansRef}/>
       <footer className="my-16 text-white text-center text-xl">
-        Todos os direitos reservados
+        All rights reserved
       </footer>
     </div>
   );

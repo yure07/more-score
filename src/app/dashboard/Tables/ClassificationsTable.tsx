@@ -24,7 +24,7 @@ export const ClassificationTable = () => {
       {Array(10).fill(null).map((_, index) => (
           <td key={index} className={`flex items-center h-10 ${index !== 9 && 'border-b border-[#737778]'} text-xs px-3`}>
             <span className="w-full truncate text-center">
-              curiosidade
+              curiosity
             </span> 
           </td>
         ))}

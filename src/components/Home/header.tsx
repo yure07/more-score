@@ -37,16 +37,16 @@ export const Header = ({ sectionsRefs }: HeaderProps) => {
             type="button"
             className="text-white cursor-pointer" 
             onClick={(e) => scrollPosition(sectionsRefs.knowUsRef, e)}>
-            Nos conheça
+            Meet us
           </button>
           <button 
             type="button"
             className="text-white cursor-pointer"
             onClick={(e) => scrollPosition(sectionsRefs.plansRef, e)}
             >
-            Planos
+            Plans
           </button>
-          <Link href='/login' className="flex items-center justify-center bg-white rounded-xl w-40 h-12 text-xl">Entrar</Link>
+          <Link href='/login' className="flex items-center justify-center bg-white rounded-xl w-40 h-12 text-xl">Sign In</Link>
         </nav>
         {toggleMenu ? (
           <X 
@@ -68,15 +68,15 @@ export const Header = ({ sectionsRefs }: HeaderProps) => {
             type="button"
             className="text-white text-start" 
             onClick={(e) => scrollPosition(sectionsRefs.knowUsRef, e)}>
-            Nos conheça
+            Meet us
           </button>
             <button 
               type="button" 
               className="text-white mt-3 text-start"
               onClick={(e) => scrollPosition(sectionsRefs.plansRef, e)}>
-              Planos
+              Plans
             </button>
-            <Link href='/login' className="flex items-center justify-center h-10 bg-white rounded-xl mt-4">Entrar</Link>
+            <Link href='/login' className="flex items-center justify-center h-10 bg-white rounded-xl mt-4">Sign In</Link>
           </div>
         )}
       </nav>

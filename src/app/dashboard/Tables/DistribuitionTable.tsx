@@ -109,115 +109,115 @@ export const DistribuitionTable = () => {
       <tr className="w-[35%] text-xs py-2 text-[10px] md:w-[25%] md:text-xs lg:w-[20%]">
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 -mt-2 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ADD8E6]'/>
-          <span>neutro (20%)</span>
+          <span>neutral (20%)</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#FBA723]'/>
-          <span>admiração (10%)</span>
+          <span>admiration (10%)</span>
         </td>
         {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#FFA5C5]'/>
-          <span>diversão</span>
+          <span>amusement</span>
         </td> */}
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#3F0000]'/>
-          <span>raiva (10%)</span>
+          <span>anger (10%)</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#000036]'/>
-          <span>confusão (10%)</span>
+          <span>confusion (10%)</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#F9200D]'/>
-          <span>amor (10%)</span>
+          <span>love (10%)</span>
         </td>
         {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#7eefa1]'/>
-          <span>surpresa</span>
+          <span>surprise</span>
         </td> */}
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ff8601]'/>
-          <span>remorso (10%)</span>
+          <span>remorse (10%)</span>
         </td>
         {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#2f9bff]'/>
-          <span>alegria</span>
+          <span>joy</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#6e3fc0]'/>
-          <span>medo</span>
+          <span>fear</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#2ab09d]'/>
-          <span>aprovação</span>
+          <span>approval</span>
         </td> */}
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#0068c9]'/>
-          <span>curiosidade (10%)</span>
+          <span>curiosity (10%)</span>
         </td>
         {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ffd16a]'/>
-          <span>alívio</span>
+          <span>relief</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ae5126]'/>
-          <span>aperreação</span> aborrecimento 
+          <span>annoyance</span> aborrecimento 
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#269eae]'/>
-          <span>gratidão</span>
+          <span>gratitude</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ae2a26]'/>
-          <span>desacordo</span>  desaprovação 
+          <span>disapproval</span>  desaprovação 
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#1c1933]'/>
-          <span>tristeza</span>
+          <span>sadness</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#3322b8]'/>
-          <span>orgulho</span>
+          <span>pride</span>
         </td> */}
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#b86d1c]'/>
-          <span>nervosismo (10%)</span>
+          <span>nervousness (10%)</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#54a8c6]'/>
-          <span>otimismo (10%)</span>
+          <span>optimism (10%)</span>
         </td>
         {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#a91212]'/>
-          <span>excitação</span>
+          <span>excitement</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#105a21]'/>
-          <span>nojo</span>
+          <span>disgust</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#5a104a]'/>
-          <span>timidez</span>  constrangimento 
+          <span>shyness</span>  constrangimento 
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#24071f]'/>
-          <span>decepção</span>
+          <span>frustation</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#c0dc1e]'/>
-          <span>cuidado</span>
+          <span>care</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#dc1ec9]'/>
-          <span>desejo</span>
+          <span>desire</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#14f741]'/>
-          <span>realização</span>
+          <span>achievement</span>
         </td>
         <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
           <div className='w-2 h-2 md:w-3 md:h-3 bg-[#2a226b]'/>
-          <span>pesar</span>
+          <span>grief</span>
         </td> */}
       </tr>
     </tbody>

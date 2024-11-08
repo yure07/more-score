@@ -27,7 +27,7 @@ const Dashboard = () => {
             Gerar relatório
           </button>
         </form>
-        <div className="w-full h-[80%] mt-7 rounded-xl border border-[#737778] overflow-auto">
+        <div className="w-full h-[80%] mt-7 rounded-xl border border-[#737778] overflow-y-auto">
           <table className="flex flex-col min-w-full h-full table-auto">
             <thead className='flex w-full justify-center items-center'>
               <tr className='flex items-center w-full border-b border-[#737778] h-10 text-white text-xs px-5 gap-5 md:h-14'>

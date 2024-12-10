@@ -29,7 +29,7 @@ const Login = () => {
     await signInWithEmailAndPassword(auth, dataLoginUser.email, dataLoginUser.password)
     .then(() => {
       setLoggingUser(false)
-      router.push('/plans')
+      router.push('/dashboard')
     })
     .catch((error) => {
       if(error.code === 'auth/invalid-email' || error.code === 'auth/invalid-credential'){

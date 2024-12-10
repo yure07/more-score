@@ -40,7 +40,7 @@ const Register = () => {
         email: '',
         password: ''
       })
-      router.push('/plans')
+      router.push('/dashboard')
     })
     .catch((error) => {
       if(error.code === 'auth/email-already-in-use'){

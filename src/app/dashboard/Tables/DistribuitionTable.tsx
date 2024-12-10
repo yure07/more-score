@@ -1,5 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Cell, type LabelProps, Pie, PieChart, ResponsiveContainer } from 'recharts';
+import type { ReportProps } from '../page';
+import { ChartPie, Loader, Unlink } from 'lucide-react';
+
+interface DistribuitionTableProps{
+  gettingComments: boolean
+  invalidLink: boolean
+  generatingReport: boolean
+  report: ReportProps[]
+}
 
 interface DataItem {
   name: string;
@@ -7,15 +16,7 @@ interface DataItem {
   color: string;
 }
 
-interface CustomLabelProps extends LabelProps {
-  cx?: number;
-  cy?: number;
-  midAngle?: number;
-  innerRadius?: number;
-  outerRadius?: number;
-  percent?: number;
-  index?: number;
-}
+type EmotionCount = Record<string, number>
 
 const data: DataItem[] = [
   { name: 'remorso', value: 10, color: '#ff8601' },
@@ -29,41 +30,34 @@ const data: DataItem[] = [
   { name: 'nervosismo', value: 10, color: '#b86d1c' },
 ]
 
-const renderCustomLabel = ({ 
-    cx = 0, 
-    cy = 0, 
-    midAngle = 0, 
-    innerRadius = 0, 
-    outerRadius = 0,
-    index = 0
-  }: CustomLabelProps) => {
-  const RADIAN = Math.PI / 180
-  const radius = innerRadius + (outerRadius - innerRadius) + 25
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+const fakeReport = [
+  { texto: "You Amazing", emocao_prevista: ["joy", "neutral"] },
+  { texto: "Keep Going", emocao_prevista: ["joy", "excited"] },
+  { texto: "Stay Strong", emocao_prevista: ["neutral", "calm"] },
+  { texto: "Smile More", emocao_prevista: ["happy", "joy"] },
+  { texto: "Be Brave", emocao_prevista: ["neutral", "joy"] },
+]
 
-  const total = data.reduce((acc, item) => acc + item.value, 0);
-  const percent = (data[index].value / total) * 100;
-
-  return (
-    <>
-      <text x={x} y={y} fill={'#ffff'} textAnchor={x > (cx ?? 0) ? 'start' : 'end'} dominantBaseline="central" className='text-[6px] font-normal'>
-        {data[index ?? 0].name} ({`${percent.toFixed(0)}%`})
-      </text>
-      {/* Linha com seta */}
-      <line 
-        x1={cx + (x - cx) * 0.5} 
-        y1={cy + (y - cy) * 0.5} 
-        x2={cx + (x - cx) * 0.5} 
-        y2={cy + (y - cy) * 0.5} 
-        markerEnd="url(#arrow)"
-      />
-    </>
-  )
-}
-
-export const DistribuitionTable = () => {
+export const DistribuitionTable = ({ gettingComments, invalidLink, generatingReport, report }: DistribuitionTableProps) => {
   const [chartSize, setChartSize] = useState({ width: 150, height: 150 })
+  const emotionCount = report.reduce<EmotionCount>((acc, item) => {
+    // biome-ignore lint/complexity/noForEach: <explanation>
+    item.emocao_prevista.forEach((emotion) => {
+      acc[emotion] = (acc[emotion] || 0) + 1;
+    });
+    return acc;
+  }, {})
+  
+  const getRandomColor = (): string => {
+    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`
+  }
+
+  const dataChart:DataItem[] = Object.entries(emotionCount).map(([name, value]) => ({
+    name,
+    value,
+    color: getRandomColor(),
+  }))
+
 
   useEffect(() => {
     const updateSize = () => {
@@ -83,143 +77,68 @@ export const DistribuitionTable = () => {
   
   return(
     <tbody className="flex w-full h-full text-white">
-      <tr className="w-[65%] h-full flex flex-col text-[#737778] border-r border-[#737778] self-center gap-4 font-bold md:w-[75%] lg:w-[80%]">
-        <td className='flex w-full h-full pt-16 lg:pt-10'>
-          <ResponsiveContainer width="100%" height="100%" className="flex justify-center">
-            <PieChart width={chartSize.width} height={chartSize.height}>
-              <Pie
-                data={data}
-                dataKey="value"
-                outerRadius="100%"
-                stroke='none'
-              >
-                {data.map((entry) => (
-                  <Cell key={entry.name} fill={entry.color} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        </td>
-        {/* <td>
-          <ChartPie className="w-16 h-16 md:w-20 md:h-20"/>
-        </td>
-        <td className="text-center w-56">Carregue um post para ver a distribuição das emoções</td> */}
-      </tr>
 
-      <tr className="w-[35%] text-xs py-2 text-[10px] md:w-[25%] md:text-xs lg:w-[20%]">
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 -mt-2 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ADD8E6]'/>
-          <span>neutral (20%)</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#FBA723]'/>
-          <span>admiration (10%)</span>
-        </td>
-        {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#FFA5C5]'/>
-          <span>amusement</span>
-        </td> */}
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#3F0000]'/>
-          <span>anger (10%)</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#000036]'/>
-          <span>confusion (10%)</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#F9200D]'/>
-          <span>love (10%)</span>
-        </td>
-        {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#7eefa1]'/>
-          <span>surprise</span>
-        </td> */}
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ff8601]'/>
-          <span>remorse (10%)</span>
-        </td>
-        {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#2f9bff]'/>
-          <span>joy</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#6e3fc0]'/>
-          <span>fear</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#2ab09d]'/>
-          <span>approval</span>
-        </td> */}
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#0068c9]'/>
-          <span>curiosity (10%)</span>
-        </td>
-        {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ffd16a]'/>
-          <span>relief</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ae5126]'/>
-          <span>annoyance</span> aborrecimento 
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#269eae]'/>
-          <span>gratitude</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#ae2a26]'/>
-          <span>disapproval</span>  desaprovação 
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#1c1933]'/>
-          <span>sadness</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#3322b8]'/>
-          <span>pride</span>
-        </td> */}
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#b86d1c]'/>
-          <span>nervousness (10%)</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#54a8c6]'/>
-          <span>optimism (10%)</span>
-        </td>
-        {/* <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#a91212]'/>
-          <span>excitement</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#105a21]'/>
-          <span>disgust</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#5a104a]'/>
-          <span>shyness</span>  constrangimento 
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#24071f]'/>
-          <span>frustation</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#c0dc1e]'/>
-          <span>care</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#dc1ec9]'/>
-          <span>desire</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#14f741]'/>
-          <span>achievement</span>
-        </td>
-        <td className='flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 md:h-9 md:pl-12'>
-          <div className='w-2 h-2 md:w-3 md:h-3 bg-[#2a226b]'/>
-          <span>grief</span>
-        </td> */}
-      </tr>
+      {report.length === 0 ? (
+        <tr className="flex flex-col w-full h-full">
+          {invalidLink && (
+            <td className="w-full flex flex-col text-[#737778] items-center gap-4 font-bold my-auto">
+              <Unlink className="w-16 h-16 md:w-20 md:h-20"/>
+              <span>Insert a valid link</span>
+            </td>
+          )}
+
+          {gettingComments && (
+            <td className="w-full flex flex-row text-[#737778] justify-center gap-4 font-bold my-auto">
+              <Loader className='animate-spin'/>
+              Getting comments...
+            </td>
+          )}
+
+          {generatingReport && (
+            <td className="w-full flex flex-row text-[#737778] justify-center gap-4 font-bold my-auto">
+              <Loader className='animate-spin'/>
+              Analyzing emotions...
+            </td>
+          )}
+
+          {report.length <= 0 && !gettingComments && !invalidLink && !generatingReport && (
+            <td className="w-full flex flex-col text-[#737778] items-center gap-4 font-bold my-auto">
+              <ChartPie className="w-16 h-16 md:w-20 md:h-20"/>
+              <span className="text-center w-56">Upload a video to see the distribution of emotions</span>
+            </td>
+          )}
+        </tr>
+      ) : (
+        <>
+          <tr className='h-full flex flex-col text-[#737778] border-r border-[#737778] w-[65%] md:w-[75%] lg:w-[80%] self-center gap-4 font-bold'> 
+              <td className='flex w-full h-full pt-16 lg:pt-10'>
+                <ResponsiveContainer width="100%" height="100%" className="flex justify-center">
+                  <PieChart width={chartSize.width} height={chartSize.height}>
+                    <Pie
+                      data={dataChart}
+                      dataKey="value"
+                      outerRadius="100%"
+                      stroke='none'
+                    >
+                      {dataChart.map((entry) => (
+                        <Cell key={entry.name} fill={entry.color} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
+              </td>
+          </tr>
+
+          <tr className="w-[35%] text-xs py-2 text-[10px] space-y-2 md:w-[25%] md:text-xs lg:w-[20%]">
+            {dataChart.map((data, index) => (
+              <td key={data.color} className={`flex flex-row items-center gap-2 border-l border-[#737778] pl-2 -ml-[1px] h-7 ${index === 0 && '-mt-2'} md:h-9 md:pl-12`}>
+                <div className='w-2 h-2 md:w-3 md:h-3' style={{ backgroundColor: data.color }}/>
+                <span>{data.name} - {data.value}</span>
+              </td>
+            ))}   
+          </tr>
+        </>
+      )}
     </tbody>
   )
 }

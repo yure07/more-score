@@ -33,3 +33,7 @@ body {
   min-height: 100vh;
   background: linear-gradient(to bottom, #000000 41%, #0E0E0E 74%);
 }
+
+.img-bg{
+  background: linear-gradient(to bottom, #000000 41%, #0E0E0E 74%);
+}

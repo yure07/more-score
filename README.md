@@ -2,12 +2,16 @@
 
 ## Projeto em andamento
 Projeto usando Inteligência Artificial para análise de textos, que traz a emoção que mostra o texto.
-Aceitando apenas textos em inglês, que serão extraídos de algum post do Instagram que o usuário disponibilizar o link.
+Aceitando apenas textos em inglês, que serão extraídos de algum vídeo do Youtube que o usuário disponibilizar o link.
 
 ## Tecnologias
 - Next.Js
 - Typescript
 - Tailwind
+
+## Próximos passos
+- Integrar meio de pagamento
+- Fazer o download dos comentários e as emoções
 
 ## Execução do projeto
 - Clone esse repositório
@@ -20,4 +24,4 @@ Aceitando apenas textos em inglês, que serão extraídos de algum post do Insta
 O servidor iniciará na porta:3000 - acesse http://localhost:3000
 
 ## Preview
-![image](https://github.com/user-attachments/assets/954dbd58-8f17-45f5-a772-25af4bfcd9b6)
+![chart-desktop](https://github.com/user-attachments/assets/626fabe2-d24e-461a-9b4c-179089b335ef)

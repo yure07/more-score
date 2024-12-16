@@ -10,6 +10,7 @@ Aceitando apenas textos em inglês, que serão extraídos de algum vídeo do You
 - Tailwind
 
 ## Próximos passos
+- Tornar rota "/dashboard" privada
 - Integrar meio de pagamento
 - Fazer o download dos comentários e as emoções
 
